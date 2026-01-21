@@ -18,7 +18,25 @@ class Food(BaseModel):
 app = FastAPI()
 templates = Jinja2Templates(directory="templates")
 
+def db_init():
+    conn = sqlite3.connect('C:/Users/lijaz/Desktop/FLASK/PROJECT_1/data.db',check_same_thread=False)
+    conn.row_factory = sqlite3.Row
+    try:
+        conn.execute("""
+            CREATE TABLE IF NOT EXISTS food_tab (
+                name TEXT NOT NULL,
+                calories INTEGER NOT NULL,
+                catagory TEXT NOT NULL,
+                date1 DATE NOT NULL
+            );
+        """)
+        conn.commit()
+    finally:
+        conn.close()
 
+@app.on_event("startup")
+def on_startup():
+    db_init()
 
 @app.get('/',response_class=HTMLResponse)
 def home(request: Request):
