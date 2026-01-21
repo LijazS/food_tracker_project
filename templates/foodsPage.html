@@ -1,0 +1,73 @@
+<html>
+<head>
+    <title>
+        HOME
+    </title>
+
+    <style>
+        .body {
+            display: flex;
+        }
+    .tab_div {
+        display: flex;
+        justify-content: center;
+    align-items: center;
+    }
+  .tab {
+    
+    border: 3px solid black;
+    border-collapse: collapse;
+    
+    
+  }
+  .tab td, .tab th {
+    border: 1px solid black;
+    gap: 5px;
+    padding: 10px;
+  }
+</style>
+
+</head>
+
+<body>
+        <div class="tab_div">
+        <h1>EATING HISTORY FOR {{ date }}</h1>
+        </div>
+        <div class="tab_div">
+        <table class="tab">
+            <tr>
+                <td>
+                    food name
+                </td>
+                <td>
+                    calories
+                </td>
+                <td>
+                    catagory
+                </td>
+            </tr>
+            {% for food in foods %}
+                <tr>
+                <td>
+                    {{food.name}}
+                </td>
+                <td>
+                    {{food.calories}}
+                </td>
+                <td>
+                    {{food.catagory}}
+                </td>
+            </tr>
+            {% endfor %}            
+        </table>
+
+        
+        </div>
+        <div class="tab_div">
+        <BR></BR><h3>YOUR TOTAL CALORIC INTAKE IS {{ total }}</h3>
+        </div>
+
+</body>
+
+
+</html>

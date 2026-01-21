@@ -1,0 +1,73 @@
+<html>
+<head>
+    <title>
+        HOME
+    </title>
+
+    <style>
+        .body {
+            display: flex;
+            justify-content: center;
+    align-items: center;
+        }
+    .tab_div {
+        display: flex;
+        justify-content: center;
+    align-items: center;
+    }
+  .tab {
+    
+    border: 3px solid black;
+    border-collapse: collapse;
+    
+    
+  }
+  .tab td, .tab th {
+    border: 1px solid black;
+    gap: 5px;
+    padding: 10px;
+  }
+</style>
+
+</head>
+
+<body>
+    <h1> HELLO {{ name }} - Add your food here </h1>
+    <div class="tab_div">
+        <form method="POST" action="http://127.0.0.1:8000/add_food">
+            <label>Add your food:
+            <input type="text" placeholder="Enter Name" class="name" name="name">
+            </label>
+            <label>Calories:
+            <input type="text" placeholder="Enter Name" class="calories" name="calories">
+            </label>
+            <label>catagory:
+            <input type="text" placeholder="Enter Name" class="catagory" name="catagory">
+            </label>
+            <label>Date:
+                <input type="date" class="date1" name="date1">
+            </label>
+            <button type="submit">ADD FOOD</button>
+            
+        </form>
+
+        
+        </div>
+        <div class="tab_div">
+        
+        <form method="get" action="http://127.0.0.1:8000/food_page">
+            <button type="submit">VIEW INTAKE</button>
+        </form>
+        </div>
+        {% if data %}
+        {{ data }}
+        {% endif %}
+        
+        
+        
+</button>
+
+</body>
+
+
+</html>
